@@ -4,6 +4,10 @@ body {
   padding-top: 80px;
 }
 
+input.form-control[type=text] {
+  height: 40px !important;
+}
+
 /*!
  * Bootstrap v4.5.0 (https://getbootstrap.com/)
  * Copyright 2011-2020 The Bootstrap Authors

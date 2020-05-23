@@ -1,3 +1,7 @@
 body{
     padding-top: 80px;
 }
+
+input.form-control[type=text] {
+    height: 40px !important;
+}
