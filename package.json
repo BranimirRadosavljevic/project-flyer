@@ -20,8 +20,9 @@
         "vue-template-compiler": "^2.6.11"
     },
     "dependencies": {
+        "bootstrap": "^4.5.0",
         "jquery": "3.4.1",
         "popper.js": "^1.12",
-        "bootstrap": "^4.5.0"
+        "sweetalert2": "^9.13.1"
     }
 }

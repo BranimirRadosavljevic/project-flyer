@@ -51,6 +51,9 @@
     </div>
 
     <script src="/js/app.js"></script>
+
+    @include('flash')
+    
 </body>
 
 </html>
