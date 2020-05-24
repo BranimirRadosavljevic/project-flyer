@@ -16,7 +16,9 @@ class CreateFlyerPhotosTable extends Migration
         Schema::create('flyer_photos', function (Blueprint $table) {
             $table->id();
             $table->foreignId('flyer_id')->constrained()->onDelete('cascade');
+            $table->string('name');
             $table->string('path');
+            $table->string('thumbnail_path');
             $table->timestamps();
         });
     }
