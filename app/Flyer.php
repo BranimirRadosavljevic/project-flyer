@@ -8,15 +8,20 @@ class Flyer extends Model
 {
     protected $guarded = [];
 
-    public function scopeLocatedAt($query, $zip, $street)
+    public static function locatedAt($zip, $street)
     {
         $street = str_replace('-', ' ', $street);
-        return $query->where(compact('zip', 'street'));
+        return static::where(compact('zip', 'street'))->first();
     }
 
     public function getPriceAttribute($price)
     {
         return '$' . number_format($price);
+    }
+
+    public function addPhoto(Photo $photo)
+    {
+        return $this->photos()->save($photo);
     }
 
     public function photos()

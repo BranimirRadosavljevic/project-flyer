@@ -4,6 +4,10 @@ body {
   padding-top: 80px;
 }
 
+img {
+  max-width: 100%;
+}
+
 input.form-control[type=text] {
   height: 40px !important;
 }

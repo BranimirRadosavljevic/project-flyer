@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="/css/app.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.7.0/dropzone.css">
     <title>Project Flyer</title>
 </head>
 
@@ -51,6 +52,8 @@
     </div>
 
     <script src="/js/app.js"></script>
+
+    @yield('scripts.footer')
 
     @include('flash')
     
