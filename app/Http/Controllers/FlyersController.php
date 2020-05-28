@@ -3,13 +3,18 @@
 namespace App\Http\Controllers;
 
 use App\Flyer;
+use App\Http\Controllers\Traits\AuthorizesUsers;
+use App\Http\Requests\ChangeFlyerRequest;
 use App\Http\Requests\FlyerRequest;
 use App\Photo;
 use Illuminate\Http\Request;
 use Illuminate\Http\UploadedFile;
+use Illuminate\Support\Facades\Auth;
 
 class FlyersController extends Controller
 {
+    use AuthorizesUsers;
+
     public function __construct()
     {
         $this->middleware('auth', ['except' => ['show']]);
@@ -43,7 +48,16 @@ class FlyersController extends Controller
      */
     public function store(FlyerRequest $request)
     {
-        Flyer::create($request->all());
+        Flyer::create([
+            'user_id' => auth()->id(),
+            'street' => $request->street,
+            'city' => $request->city,
+            'zip' => $request->zip,
+            'country' => $request->country,
+            'state' => $request->state,
+            'price' => $request->price,
+            'description' => $request->description
+        ]);
 
         flash()->success('Success', 'Your flyer has been created!');
 
@@ -63,18 +77,12 @@ class FlyersController extends Controller
     }
 
 
-    public function addPhoto($zip, $street, Request $request)
+    public function addPhoto($zip, $street, ChangeFlyerRequest $request)
     {
-        $request->validate([
-            'photo' => 'required|mimes:jpg,jpeg,png,bmp'
-        ]); 
-
         $photo = $this->makePhoto($request->file('photo'));
-
+        
         Flyer::locatedAt($zip, $street)->addPhoto($photo);
-
-        return 'Done';
-    }
+    }    
 
     protected function makePhoto(UploadedFile $file)
     {

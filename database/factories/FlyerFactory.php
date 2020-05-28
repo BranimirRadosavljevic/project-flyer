@@ -3,10 +3,12 @@
 /** @var \Illuminate\Database\Eloquent\Factory $factory */
 
 use App\Flyer;
+use App\User;
 use Faker\Generator as Faker;
 
 $factory->define(Flyer::class, function (Faker $faker) {
     return [
+        'user_id' => factory(User::class)->create(),
         'street' => $faker->streetAddress,
         'city' => $faker->city,
         'zip' => $faker->postcode,

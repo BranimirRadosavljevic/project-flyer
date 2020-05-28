@@ -1,6 +1,7 @@
 <?php
 
 use App\Flyer;
+use App\User;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Schema;
 
@@ -20,6 +21,7 @@ class FlyerSeeder extends Seeder
 
     protected function flyers()
     {
+        User::truncate();
         Flyer::truncate();
         factory(Flyer::class, 10)->create();
     }

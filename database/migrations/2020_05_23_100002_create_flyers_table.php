@@ -15,6 +15,7 @@ class CreateFlyersTable extends Migration
     {
         Schema::create('flyers', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('user_id');
             $table->string('street');
             $table->string('city', 40);
             $table->string('zip', 10);

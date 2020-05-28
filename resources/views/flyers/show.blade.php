@@ -30,9 +30,11 @@
 
     <h2>Add Your Photos</h2>
 
-    <form id="addPhotosForm" action="{{route('store_photo', [$flyer->zip, $flyer->street])}}" method="POST" class="dropzone">
-        @csrf
-    </form>
+    <div class="pb-4">
+        <form id="addPhotosForm" action="{{route('store_photo', [$flyer->zip, $flyer->street])}}" method="POST" class="dropzone">
+            @csrf
+        </form>
+    </div>
 @endsection
 
 @section('scripts.footer')
