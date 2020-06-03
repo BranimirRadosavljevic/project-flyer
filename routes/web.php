@@ -21,5 +21,6 @@ Route::resource('flyers', 'FlyersController');
 Route::get('{zip}/{street}', 'FlyersController@show');
 
 Route::post('{zip}/{street}/photos', 'PhotosController@store')->name('store_photo');
+Route::delete('photos/{id}', 'PhotosController@destroy');
 
 Auth::routes();

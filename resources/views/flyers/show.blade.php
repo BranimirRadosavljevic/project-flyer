@@ -17,8 +17,15 @@
             @foreach ($flyer->photos->chunk(4) as $set)
             <div class="row">
                 @foreach ($set as $photo)
-                    <div class="col-md-3 mb-3">
-                        <img src="{{ asset($photo->thumbnail_path) }}" alt="">
+                    <div class="col-md-3 mb-3 clearfix">
+                        <form action="/photos/{{$photo->id}}" method="POST">
+                            @csrf
+                            @method('DELETE')
+                            <button type="submit" class="btn btn-sm btn-outline-secondary float-right">&times;</button>
+                        </form>
+                        <a href="{{asset($photo->path)}}" data-lity>
+                            <img src="{{ asset($photo->thumbnail_path) }}" alt="">
+                        </a>
                     </div>
                 @endforeach
             </div>

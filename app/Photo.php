@@ -30,17 +30,14 @@ class Photo extends Model
         $this->thumbnail_path = $this->baseDir().'/tn'. $name;
     } 
     
-    // public function upload()
-    // {
-    //     $this->makeThumbnail();
-
-    //     return $this;
-    // }
-
-    protected function makeThumbnail()
+    public function delete()
     {
-        //Image::make(sprintf("%s/%s", $this->baseDir, $this->name))->fit(200)->save(sprintf("%s/tn-%s", $this->baseDir, $this->name));
-        //Image::make($this->path)->fit(200)->save($this->thumbnail_path);
-    }
+        \File::delete([
+            $this->path,
+            $this->thumbnail_path
+        ]);
+        
+        parent::delete();
+    } 
 
 }
